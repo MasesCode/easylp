@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
+import { ProvedorMovimento } from "@/components/movimento/provedor";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,7 +27,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${nunito.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ProvedorMovimento>{children}</ProvedorMovimento>
+      </body>
     </html>
   );
 }

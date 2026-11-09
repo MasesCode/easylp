@@ -93,9 +93,68 @@ Toda a cor do site passa por esses tokens — nenhuma cor literal nos componente
 - `src/components/marca/` — logo
 - `src/components/ui/` — shadcn (Base UI)
 
-Ordem das seções da home: hero → como funciona → pilares → comparação → segurança → depoimentos → profissionais → FAQ → CTA final.
+- `src/components/movimento/` — primitivas de animação (revelar, contador, flutuante, letreiro, progresso)
+- `src/lib/icones.ts` — mapa nome → ícone lucide usado pela copy
+- `src/lib/orcamento.ts` — cálculo do preço (ver "Preço")
+
+Ordem das seções da home: hero → faixa (letreiro + números) → como funciona → serviços → pilares → preços → comparação → segurança → app → depoimentos → profissionais → cobertura → blog → FAQ → CTA final.
+
+Números, depoimentos, selos e as promessas legais (cancelamento, seguro, garantia de refazer, MEI) em `conteudo.ts` são de exemplo e precisam ser validados pela Easy Faxina antes de ir ao ar. Cobertura: todo o Brasil.
+
+## Preço
+
+A calculadora (`src/lib/orcamento.ts`, usada por `precos.tsx` e pelo cartão do hero) espelha `api/src/bookings/booking-pricing.service.ts` do repositório `../easy-faxina`:
+
+- subtotal = preço-base do serviço + tipo de imóvel + cômodos × preço unitário + material + extras
+- taxa da plataforma = 5% do subtotal, cobrada da cliente; equipe de empresa parceira soma mais 5%
+- a profissional recebe o subtotal inteiro
+
+Não existem planos, recorrência com desconto nem cupom no produto. Serviços, cômodos e extras vêm de `api/data/default-services.json` e `default-pricing-items.json`; em produção o admin pode mudar os valores, então conferir antes de publicar.
+
+## Movimento
+
+Interações inspiradas na demo do Clanyeco (página `/pricing`), reescritas com framer-motion:
+
+- Cabeçalho some ao rolar para baixo e volta ao rolar para cima, com barra de anúncio que pode ser fechada
+- Reveal ao entrar na viewport (`Revelar`) com atraso escalonado
+- Decorações (brilho e bolha, no lugar das folhas do Clanyeco) com parallax e rotação ligados ao scroll (`Flutuante`)
+- Cartões com fundo levemente inclinado (`.cartao-organico`) e CTA encaixado num recorte na borda da seção (`.recorte`)
+- Letreiros infinitos que pausam no hover, contadores animados, barra de progresso de leitura e botão de voltar ao topo
+
+`MotionConfig reducedMotion="user"` e o bloco `prefers-reduced-motion` do `globals.css` desligam o movimento para quem pede. `body` usa `overflow-x: clip` (não `hidden`) para conter os reveals laterais sem quebrar o `sticky`.
+
+Se o CSS novo não aparecer no build, apague `.next/`: o cache do Turbopack às vezes mantém o `globals.css` antigo.
 
 ## Regras
 
 - **Proibido comentar código** — TS, CSS, HTML. Decisão que precisa de explicação vai em `CLAUDE.md` ou no PR.
 - **Proibida qualquer atribuição a IA** em commits, PRs ou MRs.
+
+## Fotos
+
+`public/fotos/` traz fotos do Unsplash sob a [Unsplash License](https://unsplash.com/license): uso comercial livre, sem atribuição obrigatória. Só foram usadas fotos gratuitas, nenhuma do Unsplash+. Baixadas em WebP no tamanho de uso, porque o static export serve as imagens sem otimização.
+
+| arquivo | origem |
+|---|---|
+| `hero.webp` | https://unsplash.com/photos/EVjqpcn79AM |
+| `servico-residencial.webp` | https://unsplash.com/photos/SqOMDOQb3ws |
+| `servico-pesada.webp` | https://unsplash.com/photos/LB3y1u7h61c |
+| `servico-premium.webp` | https://unsplash.com/photos/AQl-J19ocWE |
+| `servico-pos-obra.webp` | https://unsplash.com/photos/Ddzir2TCR2g |
+| `servico-mudanca.webp` | https://unsplash.com/photos/nvjIZGPp5hc |
+| `servico-airbnb.webp` | https://unsplash.com/photos/VdlmEwIQIp0 |
+| `pilares.webp` | https://unsplash.com/photos/0DcJc1RexJk |
+| `app.webp` | https://unsplash.com/photos/3GOfXlhkpxQ |
+| `profissional.webp` | https://unsplash.com/photos/SnKfmC1I9fU |
+| `pessoa-ana.webp` | https://unsplash.com/photos/Ll9YOG20UFI |
+| `pessoa-beatriz.webp` | https://unsplash.com/photos/UIrgThPxuJ4 |
+| `pessoa-camila.webp` | https://unsplash.com/photos/EnppVuXbcCE |
+| `pessoa-carolina.webp` | https://unsplash.com/photos/DrVJk1EaPSc |
+| `pessoa-fernando.webp` | https://unsplash.com/photos/0pOlBhSsF80 |
+| `pessoa-juliana.webp` | https://unsplash.com/photos/DDO0Cv4U9Gs |
+| `pessoa-lucas.webp` | https://unsplash.com/photos/rifCUO-4X8k |
+| `pessoa-mariana.webp` | https://unsplash.com/photos/9LRkKUcTmKI |
+| `pessoa-rafael.webp` | https://unsplash.com/photos/goMxTZWVOlE |
+| `dica-banheiro.webp` | https://unsplash.com/photos/Fuguvv3goCA |
+| `dica-geladeira.webp` | https://unsplash.com/photos/AEU9UZstCfs |
+| `dica-rotina.webp` | https://unsplash.com/photos/etRc_Kp3U_4 |

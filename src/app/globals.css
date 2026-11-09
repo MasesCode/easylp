@@ -99,6 +99,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    overflow-x: clip;
   }
   h1, h2, h3, h4 {
     @apply font-heading font-extrabold tracking-tight;
@@ -121,5 +122,86 @@
   }
   .titulo-secao {
     @apply text-[2rem] md:text-[3.25rem] font-extrabold tracking-tight;
+  }
+  .sobrancelha-brilho {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-tinta-suave;
+  }
+  .texto-gradiente {
+    @apply bg-gradient-to-r from-apoio to-marca bg-clip-text text-transparent;
+  }
+  .cartao-organico {
+    @apply relative isolate p-6 md:p-8;
+  }
+  .cartao-organico::before {
+    content: "";
+    @apply absolute inset-0 -z-10 rounded-[var(--radius-2xl)] bg-superficie-tint transition-transform duration-500;
+    transform: rotate(-1.2deg);
+  }
+  .cartao-organico:nth-child(even)::before {
+    transform: rotate(1.2deg);
+  }
+  .cartao-organico:hover::before {
+    transform: rotate(0deg) scale(1.02);
+  }
+  .recorte {
+    @apply absolute bottom-0 left-1/2 w-max -translate-x-1/2 translate-y-1/2 rounded-pill bg-superficie p-2.5;
+  }
+  .letreiro:hover .letreiro-faixa {
+    animation-play-state: paused;
+  }
+  .letreiro-faixa {
+    animation: letreiro linear infinite;
+  }
+  .letreiro-reverso {
+    animation-direction: reverse;
+  }
+  .flutuar {
+    animation: flutuar 6s ease-in-out infinite;
+  }
+  .flutuar-lento {
+    animation: flutuar 9s ease-in-out infinite reverse;
+  }
+  .pulsar::after {
+    content: "";
+    @apply absolute inset-0 rounded-pill bg-current;
+    animation: pulsar 2s ease-out infinite;
+  }
+}
+
+@keyframes letreiro {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes flutuar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pulsar {
+  from {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .letreiro-faixa,
+  .flutuar,
+  .flutuar-lento,
+  .pulsar::after {
+    animation: none;
   }
 }
