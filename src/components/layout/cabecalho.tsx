@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Logo } from "@/components/marca/logo";
@@ -67,9 +68,9 @@ export function Cabecalho() {
         )}
       >
         <div className="casca flex h-20 items-center justify-between gap-6">
-          <a href="#topo" aria-label="Easy Faxina, ir para o início" className="transition-transform hover:scale-[1.03]">
+          <Link href="/#topo" aria-label="Easy Faxina, ir para o início" className="transition-transform hover:scale-[1.03]">
             <Logo />
-          </a>
+          </Link>
 
           <nav aria-label="principal" className="hidden items-center gap-1 xl:flex">
             {NAV.itens.map((item) => (
