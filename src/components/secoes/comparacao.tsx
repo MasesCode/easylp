@@ -55,7 +55,7 @@ export function Comparacao() {
         </div>
 
         <div className="recorte">
-          <BotaoCta href="#precos">{COMPARACAO.cta}</BotaoCta>
+          <BotaoCta href="/#app">{COMPARACAO.cta}</BotaoCta>
         </div>
       </div>
     </section>

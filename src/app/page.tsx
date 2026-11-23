@@ -6,7 +6,6 @@ import { Faixa } from "@/components/secoes/faixa";
 import { ComoFunciona } from "@/components/secoes/como-funciona";
 import { Servicos } from "@/components/secoes/servicos";
 import { Pilares } from "@/components/secoes/pilares";
-import { Precos } from "@/components/secoes/precos";
 import { Comparacao } from "@/components/secoes/comparacao";
 import { Seguranca } from "@/components/secoes/seguranca";
 import { App } from "@/components/secoes/app";
@@ -28,7 +27,6 @@ export default function Home() {
         <ComoFunciona />
         <Servicos />
         <Pilares />
-        <Precos />
         <Comparacao />
         <Seguranca />
         <App />

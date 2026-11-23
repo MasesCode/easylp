@@ -22,7 +22,7 @@ export function CtaFinal() {
         <Revelar className="relative">
           <h2 className="mx-auto max-w-3xl text-[2rem] md:text-[3.5rem]">{CTA_FINAL.titulo}</h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-white/90">{CTA_FINAL.subtitulo}</p>
-          <BotaoCta href="#precos" variante="claro" className="mt-10 px-10">
+          <BotaoCta href="/#app" variante="claro" className="mt-10 px-10">
             {CTA_FINAL.cta}
           </BotaoCta>
           <p className="mt-6 text-sm text-white/80">{CTA_FINAL.microcopy}</p>

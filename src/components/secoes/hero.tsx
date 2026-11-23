@@ -31,7 +31,7 @@ export function Hero() {
             </Revelar>
 
             <Revelar atraso={0.65} className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <BotaoCta href="#precos">{HERO.ctaPrimario}</BotaoCta>
+              <BotaoCta href="/#app">{HERO.ctaPrimario}</BotaoCta>
               <BotaoCta href="#como-funciona" variante="contorno" seta={false}>
                 {HERO.ctaSecundario}
               </BotaoCta>

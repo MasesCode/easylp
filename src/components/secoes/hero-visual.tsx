@@ -7,7 +7,7 @@ import { motion, useMotionValue, useSpring, useTransform, type MotionValue } fro
 import { Bolha, Brilho } from "@/components/marca/decoracoes";
 import { NumeroAnimado } from "@/components/movimento/numero-animado";
 import { HERO, type IdServico } from "@/lib/conteudo";
-import { buscarServico, calcularOrcamento, PEDIDO_INICIAL } from "@/lib/orcamento";
+import { buscarServico } from "@/lib/orcamento";
 import { cn } from "@/lib/utils";
 
 function useProfundidade(eixo: MotionValue<number>, intensidade: number): MotionValue<number> {
@@ -27,7 +27,6 @@ export function HeroVisual() {
   const chipYInverso = useProfundidade(y, -20);
   const [servicoId, setServicoId] = useState<IdServico>(HERO.agendamento.servicos[0].id);
   const servico = buscarServico(servicoId);
-  const { total } = calcularOrcamento({ ...PEDIDO_INICIAL, servico: servicoId });
 
   function aoMover(evento: PointerEvent<HTMLDivElement>) {
     const area = evento.currentTarget.getBoundingClientRect();
@@ -133,11 +132,11 @@ export function HeroVisual() {
             <p className="text-xs text-tinta-suave">
               {servico.titulo} · {servico.horas}h
             </p>
-            <NumeroAnimado valor={total} casas={2} className="block font-heading text-2xl font-extrabold" />
-            <p className="text-[0.7rem] text-tinta-suave">{agendamento.taxaInclusa}</p>
+            <NumeroAnimado valor={servico.base} casas={2} className="block font-heading text-2xl font-extrabold" />
+            <p className="text-[0.7rem] text-tinta-suave">{agendamento.notaPreco}</p>
           </div>
           <a
-            href="#precos"
+            href="#app"
             className="rounded-pill bg-destaque px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-marca-forte"
           >
             {agendamento.cta}

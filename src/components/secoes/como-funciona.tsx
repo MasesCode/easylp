@@ -59,7 +59,7 @@ export function ComoFunciona() {
       </div>
 
       <div className="mt-14 text-center">
-        <BotaoCta href="#precos">{COMO_FUNCIONA.cta}</BotaoCta>
+        <BotaoCta href="/#app">{COMO_FUNCIONA.cta}</BotaoCta>
       </div>
     </section>
   );

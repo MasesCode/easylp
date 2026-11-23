@@ -95,21 +95,29 @@ Toda a cor do site passa por esses tokens — nenhuma cor literal nos componente
 
 - `src/components/movimento/` — primitivas de animação (revelar, contador, flutuante, letreiro, progresso)
 - `src/lib/icones.ts` — mapa nome → ícone lucide usado pela copy
-- `src/lib/orcamento.ts` — cálculo do preço (ver "Preço")
+- `src/lib/orcamento.ts` — `buscarServico` e `formatarReais` (preço-base dos cartões de serviço e do hero)
+- `src/app/centro-legal/` — Centro Legal (ver "Centro Legal")
 
-Ordem das seções da home: hero → faixa (letreiro + números) → como funciona → serviços → pilares → preços → comparação → segurança → app → depoimentos → profissionais → cobertura → blog → FAQ → CTA final.
+Ordem das seções da home: hero → faixa (letreiro + números) → como funciona → serviços → pilares → comparação → segurança → app → depoimentos → profissionais → cobertura → blog → FAQ → CTA final.
 
 Números, depoimentos, selos e as promessas legais (cancelamento, seguro, garantia de refazer, MEI) em `conteudo.ts` são de exemplo e precisam ser validados pela Easy Faxina antes de ir ao ar. Cobertura: todo o Brasil.
 
 ## Preço
 
-A calculadora (`src/lib/orcamento.ts`, usada por `precos.tsx` e pelo cartão do hero) espelha `api/src/bookings/booking-pricing.service.ts` do repositório `../easy-faxina`:
+A calculadora de valores foi removida da LP para não gerar confusão com o preço final do app. A LP mostra só o preço-base de cada serviço ("a partir de"), e os CTAs de agendamento levam à seção do app (`#app`).
 
-- subtotal = preço-base do serviço + tipo de imóvel + cômodos × preço unitário + material + extras
-- taxa da plataforma = 5% do subtotal, cobrada da cliente; equipe de empresa parceira soma mais 5%
-- a profissional recebe o subtotal inteiro
+Os preços-base em `SERVICOS` espelham `api/data/default-services.json` do repositório `../easy-faxina`; em produção o admin pode mudar os valores, então conferir antes de publicar.
 
-Não existem planos, recorrência com desconto nem cupom no produto. Serviços, cômodos e extras vêm de `api/data/default-services.json` e `default-pricing-items.json`; em produção o admin pode mudar os valores, então conferir antes de publicar.
+## Centro Legal
+
+Os 16 documentos aprovados (task ClickUp 17tpr0djt1f) vivem em `/centro-legal/`. O índice tem acesso rápido e a lista por categoria, e cada documento tem sua página estática em `/centro-legal/<slug>/`. A barra lateral de categorias é a mesma em todas as páginas (`src/components/centro-legal/menu-legal.tsx`).
+
+- `src/lib/centro-legal/documentos/documento-NN.ts` — **gerados** a partir dos .docx do zip da task. Não editar à mão: alterar o .docx e gerar de novo. O documento 00 (índice e guia de revisão) é interno e não é publicado.
+- `src/lib/centro-legal/index.ts` — categorias, slugs, acesso rápido e textos da página.
+- `src/lib/centro-legal/campos.ts` — valores dos campos `[[...]]` das minutas. Valor preenchido aqui tem prioridade; sem valor, vale a sugestão escrita no próprio campo (ex.: `SUGESTÃO: 24 HORAS`); sem as duas coisas, a página mostra "a definir". `VIGENCIA_CENTRO_LEGAL` mostra a data de vigência em todos os documentos quando preenchida.
+- Remissões como "Documento nº 13" viram link para o documento correspondente.
+
+Os links do cabeçalho e do rodapé usam `/#ancora` para funcionar também fora da home.
 
 ## Movimento
 

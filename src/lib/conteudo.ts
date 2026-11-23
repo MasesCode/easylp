@@ -1,22 +1,21 @@
 export const ANUNCIO = {
   texto: "Agora em todo o Brasil",
-  destaque: "Veja quanto custa a sua faxina em segundos",
-  cta: "Simular preço",
-  href: "#precos",
+  destaque: "Agende a sua faxina pelo app em poucos toques",
+  cta: "Baixar o app",
+  href: "/#app",
 } as const;
 
 export const NAV = {
   itens: [
-    { rotulo: "Como funciona", href: "#como-funciona" },
-    { rotulo: "Serviços", href: "#servicos" },
-    { rotulo: "Preços", href: "#precos" },
-    { rotulo: "Segurança", href: "#seguranca" },
-    { rotulo: "Para profissionais", href: "#profissionais" },
-    { rotulo: "Dúvidas", href: "#faq" },
+    { rotulo: "Como funciona", href: "/#como-funciona" },
+    { rotulo: "Serviços", href: "/#servicos" },
+    { rotulo: "Segurança", href: "/#seguranca" },
+    { rotulo: "Para profissionais", href: "/#profissionais" },
+    { rotulo: "Dúvidas", href: "/#faq" },
   ],
   entrar: "Entrar",
   cta: "Agendar faxina",
-  ctaHref: "#precos",
+  ctaHref: "/#app",
 } as const;
 
 export const HERO = {
@@ -47,7 +46,7 @@ export const HERO = {
     data: "Sáb, 14 de nov · 09:00",
     endereco: "Rua Harmonia, 120 · Vila Madalena",
     profissional: { nome: "Camila S.", foto: "/fotos/pessoa-camila.webp", nota: "4,98", atendimentos: "312 faxinas" },
-    taxaInclusa: "com taxa de 5%",
+    notaPreco: "Preço inicial do serviço",
     cta: "Confirmar agendamento",
   },
   chips: {
@@ -199,91 +198,6 @@ export const PILARES = {
     },
   ],
 } as const;
-
-export const PRECOS = {
-  sobrancelha: "Preços",
-  titulo: "Monte sua faxina e veja o preço na hora.",
-  subtitulo:
-    "O mesmo cálculo do app: o serviço, o tamanho da casa e os extras que você quiser. Sem plano e sem mensalidade.",
-  garantias: [
-    "Profissional verificada",
-    "Pagamento protegido",
-    "Refazemos se não ficar perfeito",
-  ],
-  taxas: { plataforma: 5, empresa: 5 },
-  etapas: {
-    servico: "1. Escolha o serviço",
-    modalidade: "2. Quem vai cuidar da sua casa",
-    imovel: "3. Conte sobre o imóvel",
-    adicionais: "4. Inclua extras, se quiser",
-  },
-  modalidades: [
-    {
-      id: "autonoma",
-      icone: "UserCheck",
-      rotulo: "Profissional verificada",
-      detalhe: "Diarista autônoma, com identidade e antecedentes checados",
-    },
-    {
-      id: "equipe",
-      icone: "Users",
-      rotulo: "Equipe certificada",
-      detalhe: "Empresa parceira, com equipe treinada e supervisão",
-    },
-  ],
-  tiposImovel: [
-    { id: "apartamento", icone: "Building2", rotulo: "Apartamento", preco: 0 },
-    { id: "casa", icone: "House", rotulo: "Casa", preco: 30 },
-    { id: "comercial", icone: "Briefcase", rotulo: "Comercial", preco: 50 },
-  ],
-  comodos: [
-    { id: "quartos", icone: "BedDouble", rotulo: "Quartos", preco: 15, inicial: 2, maximo: 10 },
-    { id: "banheiros", icone: "Bath", rotulo: "Banheiros", preco: 12, inicial: 1, maximo: 5 },
-    { id: "salas", icone: "Sofa", rotulo: "Salas", preco: 10, inicial: 1, maximo: 5 },
-    { id: "cozinhas", icone: "CookingPot", rotulo: "Cozinhas", preco: 23, inicial: 1, maximo: 3 },
-  ],
-  materiais: {
-    rotulo: "Material de limpeza",
-    opcoes: [
-      { id: "cliente", rotulo: "Eu forneço", preco: 0 },
-      { id: "profissional", rotulo: "A profissional leva", preco: 45 },
-    ],
-  },
-  adicionais: {
-    subtitulo: "Toque para incluir. O total é atualizado na hora.",
-    itens: [
-      { id: "pet", icone: "PawPrint", rotulo: "Tenho pet em casa", preco: 20 },
-      { id: "escadas", icone: "ChevronsUp", rotulo: "Imóvel com escadas", preco: 15 },
-      { id: "geladeira", icone: "Refrigerator", rotulo: "Interior da geladeira", preco: 29 },
-      { id: "armarios", icone: "Archive", rotulo: "Interior de armário de cozinha", preco: 39 },
-      { id: "janelas", icone: "AppWindow", rotulo: "Interior de janelas", preco: 35 },
-      { id: "estofado", icone: "Sofa", rotulo: "Aspirar tapete ou estofado", preco: 32 },
-      { id: "externa", icone: "Trees", rotulo: "Área externa (até 20 m²)", preco: 45 },
-      { id: "passar", icone: "Shirt", rotulo: "Passar roupa (até 20 peças)", preco: 35 },
-      { id: "lavar", icone: "WashingMachine", rotulo: "Lavar roupa (até 20 peças)", preco: 29 },
-      { id: "organicos", icone: "Leaf", rotulo: "Materiais orgânicos", preco: 49 },
-    ],
-  },
-  resumo: {
-    titulo: "Sua faxina",
-    imovel: "Imóvel e cômodos",
-    material: "Material de limpeza",
-    adicionais: "Extras",
-    subtotal: "Subtotal",
-    taxaPlataforma: "Taxa da plataforma",
-    taxaEmpresa: "Taxa da empresa parceira",
-    total: "Total estimado",
-    horas: "Duração sugerida",
-    cta: "Agendar por",
-    nota: "Valores de referência. O app mostra o preço final antes do pagamento.",
-  },
-} as const;
-
-export type IdModalidade = (typeof PRECOS.modalidades)[number]["id"];
-export type IdTipoImovel = (typeof PRECOS.tiposImovel)[number]["id"];
-export type IdComodo = (typeof PRECOS.comodos)[number]["id"];
-export type IdMaterial = (typeof PRECOS.materiais.opcoes)[number]["id"];
-export type IdAdicional = (typeof PRECOS.adicionais.itens)[number]["id"];
 
 export const COMPARACAO = {
   sobrancelha: "O novo padrão",
@@ -608,30 +522,30 @@ export const RODAPE = {
     {
       titulo: "Produto",
       links: [
-        { rotulo: "Como funciona", href: "#como-funciona" },
-        { rotulo: "Serviços", href: "#servicos" },
-        { rotulo: "Preços", href: "#precos" },
-        { rotulo: "Segurança", href: "#seguranca" },
-        { rotulo: "Dúvidas", href: "#faq" },
+        { rotulo: "Como funciona", href: "/#como-funciona" },
+        { rotulo: "Serviços", href: "/#servicos" },
+        { rotulo: "Segurança", href: "/#seguranca" },
+        { rotulo: "Dúvidas", href: "/#faq" },
       ],
     },
     {
       titulo: "Empresa",
       links: [
-        { rotulo: "Sobre", href: "#sobre" },
-        { rotulo: "Para profissionais", href: "#profissionais" },
-        { rotulo: "Carreiras", href: "#carreiras" },
-        { rotulo: "Imprensa", href: "#imprensa" },
-        { rotulo: "Blog", href: "#blog" },
+        { rotulo: "Sobre", href: "/#sobre" },
+        { rotulo: "Para profissionais", href: "/#profissionais" },
+        { rotulo: "Carreiras", href: "/#carreiras" },
+        { rotulo: "Imprensa", href: "/#imprensa" },
+        { rotulo: "Blog", href: "/#blog" },
       ],
     },
     {
       titulo: "Legal",
       links: [
-        { rotulo: "Termos de uso", href: "#termos" },
-        { rotulo: "Privacidade", href: "#privacidade" },
-        { rotulo: "LGPD", href: "#lgpd" },
-        { rotulo: "Contato", href: "#contato" },
+        { rotulo: "Centro Legal", href: "/centro-legal/" },
+        { rotulo: "Termos de uso", href: "/centro-legal/termos-de-uso/" },
+        { rotulo: "Privacidade", href: "/centro-legal/privacidade/" },
+        { rotulo: "Cookies", href: "/centro-legal/cookies/" },
+        { rotulo: "Cancelamento e reembolso", href: "/centro-legal/cancelamento-e-reembolso/" },
       ],
     },
   ],
